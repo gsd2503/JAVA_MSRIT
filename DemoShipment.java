@@ -1,109 +1,119 @@
 class Box
 {
-  double width, height, depth;
-  Box(Box ob)
-  {
-    width = ob.width;
-    height = ob.height;
-    depth = ob.depth;
-  }
+	double height, width, depth;
 
-  Box(double w, double h, double d)
-  {
-    width = w;
-    height = h;
-    depth = d;
-  }
+	Box(Box ob)
+	{
+		width = ob.width;
+		height = ob.height;
+		depth = ob.depth;
+	}
 
-  Box()
-  {
-    width = -1;
-    height = -1;
-    depth = -1;
-  }
+	Box(double w,double h,double d)
+	{
+		width = w;
+		height = h;
+		depth = d;
+	}
 
-  Box(double len)
-  {
-    width = height = depth = len;
-  }
+	Box()
+	{
+		width = -1;
+		height = -1;
+		depth = -1;
+	}
 
-  double volume()
-  {
-    return width*height*depth;
-  }
+	Box(double len)
+	{
+		width = height = depth = len;
+	}
+
+	double volume()
+	{
+		return width * height * depth;
+	}
 }
 
 class BoxWeight extends Box
 {
-  double weight;
-  BoxWeight(BoxWeight ob)
-  {
-    super(ob);
-    weight = ob.weight;
-  }
+	double weight;
 
-  BoxWeight(double w, double h, double d, double m)
-  {
-    super(w,h,d);
-    weight = m;
-  }
+	BoxWeight(BoxWeight ob)
+	{
+		super(ob);
+		weight = ob.weight;
+	}
 
-  BoxWeight()
-  {
-    super();
-    weight = -1;
-  }
+	BoxWeight(double w, double h, double d, double we)
+	{
+		super(w,h,d);
+		weight = we;
+	}
 
-  BoxWeight(double len, double m)
-  {
-    super(len);
-    weight = m;
-  }
+	BoxWeight()
+	{
+		super();
+		weight = -1;
+	}
+
+	BoxWeight(double len, double we)
+	{
+		super(len);
+		weight = we;
+	}
 }
 
-class Shipment extends BoxWeight
+class BoxShipment extends BoxWeight
 {
-  double cost;
-  Shipment(Shipment ob)
-  {
-    super(ob);
-    cost = ob.cost;
-  }
+	double cost;
 
-  Shipment(double w, double h, double d, double m, double c)
-  {
-    super(w,h,d,m);
-    cost = c;
-  }
+	BoxShipment(BoxShipment ob)
+	{
+		super(ob);
+		cost = ob.cost;
+	}
 
-  Shipment()
-  {
-    super();
-    cost = -1;
-  }
+	BoxShipment(double w, double h, double d, double we, double c)
+	{
+		super(w,h,d,we);
+		cost = c;
+	}
 
-  Shipment(double len, double m, double c)
-  {
-    super(len, m);
-    cost = c;
-  }
+	BoxShipment()
+	{
+		super();
+		cost = -1;
+	}
+
+	BoxShipment(double len, double we, double c)
+	{
+		super(len,we);
+		cost = c;
+	}
+
 }
 
 class DemoShipment
 {
-  public static void main(String args[])
-  {
-    Shipment s1 = new Shipment(10,20,15,10,3.14);
-    double vol;
-    vol = s1.volume();
-    System.out.println("Volume of Shipment: " + vol); 
-    System.out.println("Weight of Shipment: " + s1.weight);
-    System.out.println("Cost of Shipment: " + s1.cost);
+	public static void main(String args[])
+	{
+		System.out.println();
 
-    Shipment s2 = new Shipment(2,3,4);
-    vol = s2.volume();
-    System.out.println("Volume of Shipment: " + vol);
-    System.out.println("Weight of Shipment: " + s2.weight);
-    System.out.println("Cost of Shipment: " + s2.cost);
-  }
+		BoxShipment BS1 = new BoxShipment(10,20,15,10,3.41);
+		double vol1 = BS1.volume();
+		System.out.println("Volume :" + vol1);
+		System.out.println("Weight :" + BS1.weight);
+		System.out.println("Cost :" + BS1.cost);
+
+		System.out.println();
+
+		BoxShipment BS2 = new BoxShipment(2,3,4,0.76,1.28);
+		double vol2 = BS2.volume();
+		System.out.println("Volume :" + vol2);
+		System.out.println("Weight :" + BS2.weight);
+		System.out.println("Cost :" + BS2.cost);
+
+		System.out.println();
+	}
+
 }
