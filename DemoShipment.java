@@ -1,3 +1,4 @@
+// Multi Level Inheritance
 class Box
 {
 	double height, width, depth;
